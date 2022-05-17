@@ -9,13 +9,7 @@ import Dialog, { Title, Content as DialogContent, Actions } from '@smui/dialog';
   import Checkbox from '@smui/checkbox';
  import FormField from '@smui/form-field';
  
-  let prominent = false;
-  let dense = false;
-  let secondaryColor = false;
-
   let open = false;
-  let clicked = 'Nothing yet.';
- 
   let panel1Open = false;
   let panel2Open = false;
   let panel3Open = false;
@@ -25,6 +19,33 @@ function colorCallback(rgba:any) {
     console.log(rgba.detail)
 }
 </script>
+
+
+  <div class="top-app-bar-container flexor">
+    <TopAppBar
+      variant="static"
+      color={'secondary'}
+    >
+      <Row>
+        <Section>
+          <IconButton class="material-icons">menu</IconButton>
+          <AppTitle>Design UI Palette Correction</AppTitle>
+        </Section>
+        <Section align="end" toolbar>
+          <IconButton class="material-icons" aria-label="Download"
+            >file_download</IconButton
+          >
+          <IconButton class="material-icons" aria-label="Print this page"
+            >print</IconButton
+          >
+          <IconButton class="material-icons" aria-label="Bookmark this page"
+            >bookmark</IconButton
+          >
+        </Section>
+      </Row>
+    </TopAppBar>
+   
+  </div>
 <HsvPicker on:colorChange={colorCallback} startColor={"#FBFBFB"}/>
 <h1>Welcome to SvelteKit</h1>
 <div class="accordion-container">
@@ -79,8 +100,6 @@ function colorCallback(rgba:any) {
   <Label>Open Dialog</Label>
 </Button>
  
-<pre class="status">Clicked: {clicked}</pre>
-
 <Dialog
   bind:open
   aria-labelledby="simple-title"
@@ -101,96 +120,11 @@ function colorCallback(rgba:any) {
  
 </div>
 
-<div>
-  <FormField>
-    <Checkbox bind:checked={prominent} />
-    <span slot="label">Prominent</span>
-  </FormField>
-  <FormField>
-    <Checkbox bind:checked={dense} />
-    <span slot="label">Dense</span>
-  </FormField>
-  <FormField>
-    <Checkbox bind:checked={secondaryColor} />
-    <span slot="label">Secondary</span>
-  </FormField>
-</div>
- 
-<div class="flexy">
-  <div class="top-app-bar-container">
-    <TopAppBar
-      variant="static"
-      {prominent}
-      {dense}
-      color={secondaryColor ? 'secondary' : 'primary'}
-    >
-      <Row>
-        <Section>
-          <IconButton class="material-icons">menu</IconButton>
-          <Title>Static</Title>
-        </Section>
-        <Section align="end" toolbar>
-          <IconButton class="material-icons" aria-label="Download"
-            >file_download</IconButton
-          >
-          <IconButton class="material-icons" aria-label="Print this page"
-            >print</IconButton
-          >
-          <IconButton class="material-icons" aria-label="Bookmark this page"
-            >bookmark</IconButton
-          >
-        </Section>
-      </Row>
-    </TopAppBar>
-    <div>
-     ghvhgvhgvghvhgvhgv
-      <img
-        alt="Page content placeholder"
-        src="/page-content.jpg"
-        style="display: block; max-width: 100%; height: auto; margin: 1em auto;"
-      />
-    </div>
-  </div>
- 
-  <div class="top-app-bar-container flexor">
-    <TopAppBar
-      variant="static"
-      {prominent}
-      {dense}
-      color={secondaryColor ? 'secondary' : 'primary'}
-    >
-      <Row>
-        <Section>
-          <IconButton class="material-icons">menu</IconButton>
-          <AppTitle>Flex Static</AppTitle>
-        </Section>
-        <Section align="end" toolbar>
-          <IconButton class="material-icons" aria-label="Download"
-            >file_download</IconButton
-          >
-          <IconButton class="material-icons" aria-label="Print this page"
-            >print</IconButton
-          >
-          <IconButton class="material-icons" aria-label="Bookmark this page"
-            >bookmark</IconButton
-          >
-        </Section>
-      </Row>
-    </TopAppBar>
-    <div class="flexor-content">
-      <img
-        alt="Page content placeholder"
-        src="/page-content.jpg"
-        style="display: block; max-width: 100%; height: auto; margin: 1em auto;"
-      />
-    </div>
-  </div>
-</div>
 <style>
   .top-app-bar-container {
-    max-width: 480px;
+    /* max-width: 480px; */
     width: 100%;
-    height: 320px;
+    /* height: 320px; */
     border: 1px solid
       var(--mdc-theme-text-hint-on-background, rgba(0, 0, 0, 0.1));
     margin: 0 18px 18px 0;
@@ -221,6 +155,13 @@ function colorCallback(rgba:any) {
     height: 0;
     flex-grow: 1;
     overflow: auto;
+  }
+
+  .page-container{
+    height: 100%;
+    width: 100%;
+    padding: 0;
+    margin: 0;
   }
 </style>
 
