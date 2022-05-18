@@ -1,25 +1,28 @@
 <script lang="ts">
 // @ts-ignore
 import {HsvPicker} from 'svelte-color-picker';
- import Accordion, { Panel, Header, Content } from '@smui-extra/accordion';
+ import Accordion, { Panel,Header, Content  } from '@smui-extra/accordion'; //Header, Content 
   import IconButton, { Icon } from '@smui/icon-button';
-import Dialog, { Title, Content as DialogContent, Actions } from '@smui/dialog';
+import Dialog, {  Content as DialogContent, Actions, Title} from '@smui/dialog'; 
   import Button, { Label } from '@smui/button';
  import  TopAppBar, { Row, Section, Title as AppTitle,  } from '@smui/top-app-bar';
-  import Checkbox from '@smui/checkbox';
- import FormField from '@smui/form-field';
- 
+import DrawerModal from "../components/modals/DrawerModal.svelte"
+
+
   let open = false;
   let panel1Open = false;
   let panel2Open = false;
   let panel3Open = false;
   let panel4Open = false;
 
+
+
 function colorCallback(rgba:any) {
     console.log(rgba.detail)
 }
 </script>
 
+<html>
 
   <div class="top-app-bar-container flexor">
     <TopAppBar
@@ -46,6 +49,7 @@ function colorCallback(rgba:any) {
     </TopAppBar>
    
   </div>
+  <DrawerModal/>
 <HsvPicker on:colorChange={colorCallback} startColor={"#FBFBFB"}/>
 <h1>Welcome to SvelteKit</h1>
 <div class="accordion-container">
@@ -120,6 +124,8 @@ function colorCallback(rgba:any) {
  
 </div>
 
+</html>
+
 <style>
   .top-app-bar-container {
     /* max-width: 480px; */
@@ -133,7 +139,10 @@ function colorCallback(rgba:any) {
     overflow: auto;
     display: inline-block;
   }
- 
+ html{
+   padding: 0;
+   margin: 0;
+ }
   @media (max-width: 480px) {
     .top-app-bar-container {
       margin-right: 0;
@@ -162,6 +171,34 @@ function colorCallback(rgba:any) {
     width: 100%;
     padding: 0;
     margin: 0;
+  }
+
+
+  /* These classes are only needed because the
+    drawer is in a container on the page. */
+  .drawer-container {
+    position: relative;
+    display: flex;
+    height: 350px;
+    max-width: 600px;
+    border: 1px solid
+      var(--mdc-theme-text-hint-on-background, rgba(0, 0, 0, 0.1));
+    overflow: hidden;
+    z-index: 0;
+  }
+ 
+  * :global(.app-content) {
+    flex: auto;
+    overflow: auto;
+    position: relative;
+    flex-grow: 1;
+  }
+ 
+  .main-content {
+    overflow: auto;
+    padding: 16px;
+    height: 100%;
+    box-sizing: border-box;
   }
 </style>
 
